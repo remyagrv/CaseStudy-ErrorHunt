@@ -1,8 +1,8 @@
 // point 1 => In package.json main is changed to 'app.js'
 const express = require('express'); 
 const path = require ('path'); 
-const bodyParser = require('body-parser');
-//point 2 => defined bodyParser
+// const bodyParser = require('body-parser');
+//point 2 => defined bodyParser but it shows deprecation warning, so used line 41.
 const cors = require('cors');
 
 const nav= [
@@ -38,7 +38,7 @@ app.set('views','./src/views');
 app.set('view engine','ejs'); 
 
 
-app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.urlencoded({extended:true}));
 //point 7 => used cors which helps in resource sharing.
 app.use(cors());
 app.use(express.json());
