@@ -60,9 +60,9 @@ app.get('/',function(req,res){
 
 
 
+const PORT = process.env.PORT || 3000;
 
-
-app.listen(5000,()=>{
-    console.log("Server Ready on 5000");
+app.listen(PORT,()=>{
+    console.log("Server Ready on"+PORT);
 });
 //point 5=> console log is modified to 5000
