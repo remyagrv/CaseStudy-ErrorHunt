@@ -11,11 +11,13 @@ loginRouter.get('/',function(req,res){
 
 loginRouter.get("/check",function(req,res){
     var checkuser = {
-        uid:req.param("uid"),
-        pwd:req.param("pwd")
+        // uid:req.param("uid"),
+        // pwd:req.param("pwd")
+        uid:req.query.uid,
+        pwd:req.query.pwd
         
     };
-    //point 10: req.param is the depricated one which is changed to req.params.
+    //point 10: req.param is the depricated one which is changed to req.query.
     console.log(checkuser);
     var flag=false;
 

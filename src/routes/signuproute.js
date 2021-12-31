@@ -9,11 +9,13 @@ signupRouter.get('/',function(req,res){
 })
 
 signupRouter.get("/adduser",function(req,res){
-     //point 10: req.param is the depricated one which is changed to req.params.
+     //point 10: req.param is the depricated one which is changed to req.query.
     var newuser = {
        
-        "uid":req.param("uid"),
-        "pwd":req.param("pwd")
+        // "uid":req.param("uid"),
+        // "pwd":req.param("pwd")
+        uid:req.query.uid,
+        pwd:req.query.pwd
       
     };
     console.log(newuser);
