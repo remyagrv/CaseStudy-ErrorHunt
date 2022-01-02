@@ -98,7 +98,7 @@ authorsRouter.post('/edit', function (req, res) {
 
 //router to update author
 authorsRouter.post('/update', function (req, res) {
-
+// made modifications for retaining the image in updation, if no changes is made in image.
     //authordata.findByIdAndUpdate(req.body.id, { $set: req.body }, function (err, data) {
         authordata.findOne({_id:req.body.id})
         .then(function(author)
