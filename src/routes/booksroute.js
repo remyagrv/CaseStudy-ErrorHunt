@@ -98,20 +98,29 @@ booksRouter.post('/edit', function (req, res) {
 
 //router to update book
 booksRouter.post('/update', function (req, res) {
+ 
+    //bookdata.findByIdAndUpdate(req.body.id, { $set: req.body }, function (err, data) {
+        bookdata.findOne({_id:req.body.id})
+        .then(function(book)
+        {if(req.body.image!=""){
+            book.image = req.body.image;
+        }
+        book.title = req.body.title;
+        book.title = req.body.author;
+        book.about = req.body.about;
 
-    bookdata.findByIdAndUpdate(req.body.id, { $set: req.body }, function (err, data) {
-        if (err) {
-            res.json({ status: "Failed" });
-        }
-        else if (data.n == 0) {
-            res.json({ status: "No match Found" });
-        }
-        else {
-            res.redirect("/books");
-        }
-
-    }) 
-})
+        book.save(function (err){
+            if (err) {
+                res.json({ status: "Failed" });
+            }
+            
+            else {
+                res.redirect("/books")
+            }
+    
+        })  
+    })
+    })
 return booksRouter;
 
 }
