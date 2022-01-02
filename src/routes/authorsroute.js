@@ -99,18 +99,25 @@ authorsRouter.post('/edit', function (req, res) {
 //router to update author
 authorsRouter.post('/update', function (req, res) {
 
-    authordata.findByIdAndUpdate(req.body.id, { $set: req.body }, function (err, data) {
+    //authordata.findByIdAndUpdate(req.body.id, { $set: req.body }, function (err, data) {
+        authordata.findOne({_id:req.body.id})
+        .then(function(author)
+        {if(req.body.image!=""){
+            author.image = req.body.image;
+        }
+        author.title = req.body.title;
+        author.about = req.body.about;
+        author.save(function (err){
         if (err) {
             res.json({ status: "Failed" });
         }
-        else if (data.n == 0) {
-            res.json({ status: "No match Found" });
-        }
+        
         else {
             res.redirect("/authors")
         }
 
     })  
+})
 })
 return authorsRouter;
 

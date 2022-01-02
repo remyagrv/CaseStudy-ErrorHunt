@@ -98,7 +98,7 @@ booksRouter.post('/edit', function (req, res) {
 
 //router to update book
 booksRouter.post('/update', function (req, res) {
- 
+// made modifications for retaining the image in updation, if no changes is made in image.
     //bookdata.findByIdAndUpdate(req.body.id, { $set: req.body }, function (err, data) {
         bookdata.findOne({_id:req.body.id})
         .then(function(book)
